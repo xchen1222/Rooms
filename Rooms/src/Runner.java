@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Runner {
 	
+	static int [][] map = new int[5][5];
 
 	private static boolean gameOn = true;
 	
@@ -16,8 +17,8 @@ public class Runner {
 			{
 				building[x][y] = new Room(x,y);
 			}
+			System.out.println();
 		}
-		
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
@@ -29,6 +30,16 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
+			map[player1.getxLoc()][player1.getyLoc()] = 1;
+			for (x = 0; x<building.length; x++)
+			{
+				for (y = 0; y < map[x].length; y++)
+				{
+					building[x][y] = new Room(x,y);
+					System.out.print(map[x][y]);
+				}
+				System.out.println();
+			}
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
@@ -99,13 +110,19 @@ public class Runner {
 				break;
 					
 		}
-		return true;
+		return false;
 	}
 	public static void gameOff()
 	{
 		gameOn = false;
 	}
+	public static int Map(Person p) {
+		map[p.getxLoc()][p.getyLoc()] = 1;
+		return 1;
+	}
 	
 
 
 }
+
+
