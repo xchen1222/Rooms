@@ -2,14 +2,20 @@ import java.util.Scanner;
 
 public class Runner {
 	
-	static int [][] map = new int[5][5];
+	static String [][] map = new String[5][5];
 	static int [][] blankMap =  new int [5][5];
 	private static boolean gameOn = true;
 	
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
-		
+		for (int n = 0; n<map.length; n++)
+		{
+			for (int m = 0; m < map[n].length; m++)
+			{
+				map[n][m] = "?";
+			}
+		}
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
@@ -34,12 +40,16 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			map[player1.getxLoc()][player1.getyLoc()] = 1;
-			for (x = 0; x<building.length; x++)
+			map[player1.getxLoc()][player1.getyLoc()] = "x";
+			for (int n = 0; n<map.length; n++)
 			{
-				for (y = 0; y < map[x].length; y++)
+				for (int m = 0; m < map[n].length; m++)
 				{
-					System.out.print(map[x][y]);
+					if (map[n][m].equals("x")) {
+						map[n][m] = "0";
+					}
+					map[player1.getxLoc()][player1.getyLoc()] = "x";
+					System.out.print(map[n][m]);
 				}
 				System.out.println();
 			}
