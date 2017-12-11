@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Runner {
 	
 	static int [][] map = new int[5][5];
-
+	static int [][] blankMap =  new int [5][5];
 	private static boolean gameOn = true;
 	
 	public static void main(String[] args)
@@ -20,10 +20,14 @@ public class Runner {
 			System.out.println();
 		}
 		//Create a random winning room.
+		System.out.println("Hello young traveler \n"  + "Its dangerous to go alone here take this");
+		
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
-		 
+		int a = (int)(Math.random()*building.length);
+		int b = (int)(Math.random()*building.length);
+		building[a][b] = new XingRoom(a,b); 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
 		building[0][0].enterRoom(player1);
@@ -35,12 +39,11 @@ public class Runner {
 			{
 				for (y = 0; y < map[x].length; y++)
 				{
-					building[x][y] = new Room(x,y);
 					System.out.print(map[x][y]);
 				}
 				System.out.println();
 			}
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move? (Choose W, S, D, A)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -60,7 +63,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -71,7 +74,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -95,7 +98,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
