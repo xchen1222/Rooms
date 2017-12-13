@@ -5,6 +5,8 @@ public class Runner {
 	static String [][] map = new String[5][5];
 	static int [][] blankMap =  new int [5][5];
 	private static boolean gameOn = true;
+	static int gotName = 0;
+	static String name = 0;
 	
 	public static void main(String[] args)
 	{
@@ -13,7 +15,7 @@ public class Runner {
 		{
 			for (int m = 0; m < map[n].length; m++)
 			{
-				map[n][m] = "?";
+				map[n][m] = "?  ";
 			}
 		}
 		//Fill the building with normal rooms
@@ -25,14 +27,20 @@ public class Runner {
 			}
 			System.out.println();
 		}
+		System.out.println("Please input your name");
+		Scanner in = new Scanner(System.in);
+		if (gotName == 0) {
+			name = in.nextLine();
+		}
 		//Create a random winning room.
 		System.out.println("Hello young traveler \n"  + "Its dangerous to go alone here take this");
 		
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
+		int x = (int)(Math.random()*building.length-1)+1;
+		int y = (int)(Math.random()*building.length-1)+1;
 		building[x][y] = new WinningRoom(x, y);
-		int a = (int)(Math.random()*building.length);
-		int b = (int)(Math.random()*building.length);
+		int a = (int)(Math.random()*building.length-1)+1;
+		
+		int b = (int)(Math.random()*building.length-1)+1;
 		building[a][b] = new XingRoom(a,b); 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
@@ -40,15 +48,15 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			map[player1.getxLoc()][player1.getyLoc()] = "x";
+			map[player1.getxLoc()][player1.getyLoc()] = "O  ";
 			for (int n = 0; n<map.length; n++)
 			{
 				for (int m = 0; m < map[n].length; m++)
 				{
-					if (map[n][m].equals("x")) {
-						map[n][m] = "0";
+					if (map[n][m].equals("0  ")) {
+						map[n][m] = "O  ";
 					}
-					map[player1.getxLoc()][player1.getyLoc()] = "x";
+					map[player1.getxLoc()][player1.getyLoc()] = "0  ";
 					System.out.print(map[n][m]);
 				}
 				System.out.println();
@@ -129,11 +137,6 @@ public class Runner {
 	{
 		gameOn = false;
 	}
-	public static int Map(Person p) {
-		map[p.getxLoc()][p.getyLoc()] = 1;
-		return 1;
-	}
-	
 
 
 }
