@@ -62,8 +62,17 @@ public class Runner {
 				}
 				System.out.println();
 			}
+			for (x = 0; x<building.length; x++)
+			{
+				for (y = 0; y < building[x].length; y++)
+				{
+					building[x][y].Map();
+				}
+				System.out.println();
+			}
 			System.out.println("Where would you like to move? (Choose W, S, D, A)");
 			String move = in.nextLine();
+			
 			if(validMove(move, player1, building))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
