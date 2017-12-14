@@ -1,8 +1,14 @@
 
 public class Person {
-	String firstName;
-	String familyName;
 	int xLoc, yLoc;
+	String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public int getxLoc() {
 		return xLoc;
@@ -20,12 +26,11 @@ public class Person {
 		this.yLoc = yLoc;
 	}
 
-	public Person (String firstName, String familyName, int xLoc, int yLoc)
+	public Person (String name, int xLoc, int yLoc)
 	{
-		this.firstName = firstName;
-		this.familyName = familyName;
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+		this.name = name;
 	}
 
 

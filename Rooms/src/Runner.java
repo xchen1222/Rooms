@@ -6,13 +6,14 @@ public class Runner {
 	static int [][] blankMap =  new int [5][5];
 	private static boolean gameOn = true;
 	static int gotName = 0;
-	static String name = 0;
+	static String name;
 	
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
 		for (int n = 0; n<map.length; n++)
 		{
+			
 			for (int m = 0; m < map[n].length; m++)
 			{
 				map[n][m] = "?  ";
@@ -31,9 +32,10 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		if (gotName == 0) {
 			name = in.nextLine();
+			gotName++;
 		}
 		//Create a random winning room.
-		System.out.println("Hello young traveler \n"  + "Its dangerous to go alone here take this");
+		System.out.println("Hello young traveler " + name + "\n"  + "Its dangerous to go alone here take this");
 		
 		int x = (int)(Math.random()*building.length-1)+1;
 		int y = (int)(Math.random()*building.length-1)+1;
@@ -43,9 +45,8 @@ public class Runner {
 		int b = (int)(Math.random()*building.length-1)+1;
 		building[a][b] = new XingRoom(a,b); 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		Person player1 = new Person(name, 0, 0);
 		building[0][0].enterRoom(player1);
-		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
 			map[player1.getxLoc()][player1.getyLoc()] = "O  ";
