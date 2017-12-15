@@ -43,7 +43,7 @@ public class Runner {
 		int a = (int)(Math.random()*building.length-1)+1;
 		
 		int b = (int)(Math.random()*building.length-1)+1;
-		building[a][b] = new XingRoom(a,b); 
+		building[a][b] = new XingRoom(5,5); 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person(name, 0, 0);
 		building[0][0].enterRoom(player1);
@@ -66,7 +66,7 @@ public class Runner {
 			{
 				for (y = 0; y < building[x].length; y++)
 				{
-					building[x][y].Map();
+					building[x][y].Map(player1);
 				}
 				System.out.println();
 			}
@@ -74,6 +74,7 @@ public class Runner {
 			String move = in.nextLine();
 			
 			if(validMove(move, player1, building))
+			
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 				
@@ -81,6 +82,7 @@ public class Runner {
 			else {
 				System.out.println("Please choose a valid move.");
 			}
+			
 			
 			
 		}
