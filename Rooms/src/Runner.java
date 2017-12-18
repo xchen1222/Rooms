@@ -45,7 +45,7 @@ public class Runner {
 		int b = (int)(Math.random()*building.length-1)+1;
 		building[a][b] = new XingRoom(5,5); 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person(name, 0, 0);
+		Person player1 = new Person(name, 0, 0 , 10);
 		building[0][0].enterRoom(player1);
 		while(gameOn)
 		{
