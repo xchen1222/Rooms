@@ -89,6 +89,7 @@ public class Runner {
 		in.close();
 	}
 	
+	
 	public static boolean validMove(String move, Person p, Room[][] map)
 	{
 		move = move.toLowerCase().trim();
