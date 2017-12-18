@@ -3,8 +3,8 @@ import java.util.Random;
 public class XingRoom extends Room 
 {
 	Random rand = new Random();
-	int random = rand.nextInt(5);
-	int random2 = rand.nextInt(5);
+	//int random = rand.nextInt(5);
+	//int random2 = rand.nextInt(5);
 	
 	public XingRoom(int x, int y) 
 	{
@@ -13,9 +13,10 @@ public class XingRoom extends Room
 	public void enterRoom(Person x)
 	{
 		occupant = x;
-		x.setxLoc(random);
-		x.setyLoc(random2);
-		System.out.println("Literally Dead");
+		x.setxLoc(rand.nextInt(5));
+		x.setyLoc(rand.nextInt(5));
+		
+		System.out.println("Random Teleport");
 	}
 	
 	public void Map(Person x) {

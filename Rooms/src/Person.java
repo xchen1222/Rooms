@@ -1,8 +1,9 @@
 
 public class Person {
-	int xLoc, yLoc;
+	int xLoc;
 	String name;
 	int health;
+	int yLoc;
 	
 	public String getName() {
 		return name;

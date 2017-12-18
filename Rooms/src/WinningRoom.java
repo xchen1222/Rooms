@@ -13,8 +13,9 @@ public class WinningRoom extends Room {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		System.out.println("You found the winning room! Ten points for Gryffindor.");
-		Runner.gameOff();
+		
+		System.out.println("This room is locked");
+		//Runner.gameOff();
 	}
 	public void Map(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
