@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Runner {
 	
@@ -7,6 +8,7 @@ public class Runner {
 	private static boolean gameOn = true;
 	static int gotName = 0;
 	static String name;
+	static Random rand = new Random();
 	
 	public static void main(String[] args)
 	{
@@ -32,10 +34,9 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		if (gotName == 0) {
 			name = in.nextLine();
-			gotName++;
+			gotName++;			
 		}
 		//Create a random winning room.
-		System.out.println("Hello young traveler " + name + "\n"  + "Its dangerous to go alone here take this");
 		
 		int x = (int)(Math.random()*building.length-1)+1;
 		int y = (int)(Math.random()*building.length-1)+1;
@@ -46,22 +47,11 @@ public class Runner {
 		building[a][b] = new XingRoom(5,5); 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person(name, 0, 0 , 10);
+		Monster monster1 = new Monster("a", rand.nextInt(5), rand.nextInt(5), 5);
+		System.out.println("Hello young traveler " + name + "\n"  + "Its dangerous to go alone here take this");
 		building[0][0].enterRoom(player1);
 		while(gameOn)
 		{
-			map[player1.getxLoc()][player1.getyLoc()] = "O  ";
-			for (int n = 0; n<map.length; n++)
-			{
-				for (int m = 0; m < map[n].length; m++)
-				{
-					if (map[n][m].equals("0  ")) {
-						map[n][m] = "O  ";
-					}
-					map[player1.getxLoc()][player1.getyLoc()] = "0  ";
-					System.out.print(map[n][m]);
-				}
-				System.out.println();
-			}
 			for (x = 0; x<building.length; x++)
 			{
 				for (y = 0; y < building[x].length; y++)
@@ -82,11 +72,8 @@ public class Runner {
 			else {
 				System.out.println("Please choose a valid move.");
 			}
-			
-			
-			
 		}
-		in.close();
+	in.close();
 	}
 	
 	

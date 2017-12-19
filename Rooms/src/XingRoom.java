@@ -21,7 +21,11 @@ public class XingRoom extends Room
 	
 	public void Map(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
-			System.out.print("[0]");
+			if (x.getName().equals("")){ 
+				System.out.print("[0]");
+			} else {
+				System.out.print("["+ occupant.getName().charAt(0) + "]");
+			}
 		}
 		else if (discovered == true) {
 			System.out.print("[X]");
