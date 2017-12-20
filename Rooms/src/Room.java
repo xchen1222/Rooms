@@ -9,8 +9,10 @@ public class Room {
 		xLoc = x;
 		yLoc = y;
 	}
+	
 	public void Map(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
+			discovered = true;
 			if (x.getName().equals("")){ 
 				System.out.print("[0]");
 			} else {
@@ -22,6 +24,7 @@ public class Room {
 		} else
 			System.out.print("[?]");
 	}
+	
 	public void enterRoom(Person x)
 	{
 		System.out.println("You enter a plain old room");

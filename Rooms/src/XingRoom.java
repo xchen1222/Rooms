@@ -13,14 +13,15 @@ public class XingRoom extends Room
 	public void enterRoom(Person x)
 	{
 		occupant = x;
+		discovered = true;
 		x.setxLoc(rand.nextInt(5));
 		x.setyLoc(rand.nextInt(5));
-		
 		System.out.println("Random Teleport");
 	}
 	
 	public void Map(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
+			discovered = true;
 			if (x.getName().equals("")){ 
 				System.out.print("[0]");
 			} else {

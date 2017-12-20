@@ -12,6 +12,7 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
+		Board[][] blankMap = new Board[5][5];
 		Room[][] building = new Room[5][5];
 		for (int n = 0; n<map.length; n++)
 		{
