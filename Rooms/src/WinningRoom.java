@@ -17,14 +17,14 @@ public class WinningRoom extends Room {
 		System.out.println("This room is locked");
 		//Runner.gameOff();
 	}
-	public void Map(Person x) {
+	public String display(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
-			System.out.print("[0]");
+			return("[0]");
 		}
 		else if (discovered == true) {
-			System.out.print("[W]");
+			return("[W]");
 		} else
-			System.out.print("[W]");
+			return("[W]");
 	}
 	
 

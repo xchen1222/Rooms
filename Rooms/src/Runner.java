@@ -3,8 +3,6 @@ import java.util.Random;
 
 public class Runner {
 	
-	static String [][] map = new String[5][5];
-	static int [][] blankMap =  new int [5][5];
 	private static boolean gameOn = true;
 	static int gotName = 0;
 	static String name;
@@ -14,20 +12,21 @@ public class Runner {
 	{
 		Board[][] blankMap = new Board[5][5];
 		Room[][] building = new Room[5][5];
-		for (int n = 0; n<map.length; n++)
-		{
-			
-			for (int m = 0; m < map[n].length; m++)
-			{
-				map[n][m] = "?  ";
-			}
-		}
+
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
 			for (int y = 0; y < building[x].length; y++)
 			{
 				building[x][y] = new Room(x,y);
+			}
+			System.out.println();
+		}
+		for (int x = 0; x<blankMap.length; x++)
+		{
+			for (int y = 0; y < blankMap[x].length; y++)
+			{
+				blankMap[x][y] = new Board(x,y);
 			}
 			System.out.println();
 		}
@@ -53,11 +52,11 @@ public class Runner {
 		building[0][0].enterRoom(player1);
 		while(gameOn)
 		{
-			for (x = 0; x<building.length; x++)
+			for (x = 0; x<blankMap.length; x++)
 			{
-				for (y = 0; y < building[x].length; y++)
+				for (y = 0; y < blankMap[x].length; y++)
 				{
-					building[x][y].Map(player1);
+					blankMap[x][y].printBoard(building, player1);
 				}
 				System.out.println();
 			}

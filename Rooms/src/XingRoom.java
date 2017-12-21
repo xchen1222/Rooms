@@ -19,19 +19,19 @@ public class XingRoom extends Room
 		System.out.println("Random Teleport");
 	}
 	
-	public void Map(Person x) {
+	public String display(Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
 			discovered = true;
 			if (x.getName().equals("")){ 
-				System.out.print("[0]");
+				return("[0]");
 			} else {
-				System.out.print("["+ occupant.getName().charAt(0) + "]");
+				return("["+ occupant.getName().charAt(0) + "]");
 			}
 		}
 		else if (discovered == true) {
-			System.out.print("[X]");
+			return("[X]");
 		} else
-			System.out.print("[X]");
+			return("[X]");
 	}
 	public void leaveRoom(Person x)
 	{

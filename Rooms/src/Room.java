@@ -10,19 +10,19 @@ public class Room {
 		yLoc = y;
 	}
 	
-	public void Map(Person x) {
+	public String display (Person x) {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
 			discovered = true;
 			if (x.getName().equals("")){ 
-				System.out.print("[0]");
+				return ("[0]");
 			} else {
-				System.out.print("["+ x.getName().charAt(0) + "]");
+				return ("["+ x.getName().charAt(0) + "]");
 			}
 		}
 		else if (discovered == true) {
-			System.out.print("[O]");
+			return ("[O]");
 		} else
-			System.out.print("[?]");
+			return ("[?]");
 	}
 	
 	public void enterRoom(Person x)

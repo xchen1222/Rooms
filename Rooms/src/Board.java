@@ -2,13 +2,19 @@
 public class Board {
 	int length;
 	int width;
-
-	public Board(int x, int y) {
-		length = x;
-		width = y;
+	Room[][] rooms;
+	
+	public Board(int length, int width) {
+		this.length = length;
+		this.width = width;
 	}
-	public void printBoard(Room[][] room, Person x) {
-		
+
+	public Board(Room[][] rooms) {
+		this.rooms = rooms;
+	}
+	
+	public void printBoard(Room[][] rooms, Person x) {
+		System.out.print(rooms[length][width].display(x));
 	}
 
 }
