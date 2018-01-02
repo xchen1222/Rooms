@@ -7,6 +7,7 @@ public class Runner {
 	static int gotName = 0;
 	static String name;
 	static Random rand = new Random();
+	static int gotSize = 0;
 	
 	public static void main(String[] args)
 	{
@@ -26,7 +27,7 @@ public class Runner {
 		{
 			for (int y = 0; y < blankMap[x].length; y++)
 			{
-				blankMap[x][y] = new Board(x,y);
+				blankMap[x][y] = new Board(x);
 			}
 			System.out.println();
 		}
@@ -35,6 +36,16 @@ public class Runner {
 		if (gotName == 0) {
 			name = in.nextLine();
 			gotName++;			
+		}
+		System.out.println(".");
+		if (gotSize == 0) {
+			for (int x = 0; x<blankMap.length; x++)
+			{
+				for (int y = 0; y < blankMap[x].length; y++)
+				{
+					blankMap[x][y].boardSize(in.nextLine());
+				}
+			}
 		}
 		//Create a random winning room.
 		
