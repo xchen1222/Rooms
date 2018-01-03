@@ -8,11 +8,27 @@ public class Runner {
 	static String name;
 	static Random rand = new Random();
 	static int gotSize = 0;
+	static int size = 1;
 	
 	public static void main(String[] args)
 	{
-		Board[][] blankMap = new Board[5][5];
-		Room[][] building = new Room[5][5];
+		System.out.println("Please input your name");
+		Scanner in = new Scanner(System.in);
+		if (gotName == 0) {
+			name = in.nextLine();
+			gotName++;			
+		}
+		System.out.println(".");
+		if ((gotSize == 0) && (gotName == 1)) {
+			boardSize(in.nextLine());
+			System.out.println(size);
+			gotSize++;
+		}
+		System.out.println(size);
+		
+		
+		Board[][] blankMap = new Board[size][size];
+		Room[][] building = new Room[size][size];
 
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -27,26 +43,12 @@ public class Runner {
 		{
 			for (int y = 0; y < blankMap[x].length; y++)
 			{
-				blankMap[x][y] = new Board(x);
+				blankMap[x][y] = new Board(x,y);
 			}
 			System.out.println();
 		}
-		System.out.println("Please input your name");
-		Scanner in = new Scanner(System.in);
-		if (gotName == 0) {
-			name = in.nextLine();
-			gotName++;			
-		}
-		System.out.println(".");
-		if (gotSize == 0) {
-			for (int x = 0; x<blankMap.length; x++)
-			{
-				for (int y = 0; y < blankMap[x].length; y++)
-				{
-					blankMap[x][y].boardSize(in.nextLine());
-				}
-			}
-		}
+		
+		
 		//Create a random winning room.
 		
 		int x = (int)(Math.random()*building.length-1)+1;
@@ -148,6 +150,25 @@ public class Runner {
 	{
 		gameOn = false;
 	}
+	public static void boardSize(String x) {
+		if (x.toLowerCase().equals("small")) {
+			size = 5;
+		}
+		if (x.toLowerCase().equals("medium")) {
+			size = 7;
+		}
+		if (x.toLowerCase().equals("large")) {
+			size = 10;
+		}
+		else {
+		System.out.println("Invalid size, Please select one of the following:\n"
+				+ "1. Small - 5 x 5\n"
+				+ "2. Medium - 7x7\n"
+				+ "3. Large - 10x10");
+		}
+	
+
+}
 
 
 }
