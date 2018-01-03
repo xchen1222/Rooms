@@ -1,10 +1,12 @@
 
 public class Board {
-	int size;
+	int length;
+	int width;
 	Room[][] rooms;
 	
-	public Board(int size) {
-		this.size = size;
+	public Board(int length, int width) {
+		this.length = length;
+		this.width = width;
 	}
 
 	public Board(Room[][] rooms) {
@@ -12,16 +14,20 @@ public class Board {
 	}
 	
 	public void printBoard(Room[][] rooms, Person x) {
-		System.out.print(rooms[size][size].display(x));
+		System.out.print(rooms[length][width].display(x));
 	}
+	
 	public void boardSize(String x) {
 		switch(x) {
 		case "small":
-			size = 5;
+			length = 5;
+			width = 5;
 		case "medium":
-			size = 7;
+			length = 7;
+			width = 7;
 		case "large":
-			size = 10;
+			length = 10;
+			width = 10;
 		default: 
 			break;
 		}
