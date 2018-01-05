@@ -18,6 +18,10 @@ public class Runner {
 			name = in.nextLine();
 			gotName++;			
 		}
+		System.out.println("Rules:"
+				+ "Everytime you enter a room you will take 1 damage. \n"
+				+ "The next time you enter that room you will take 1 more than the last. \n"
+				+ "You must gather keys to enter the winning room\n");
 		System.out.println("Please select one of the following:\"\n" + 
 				"\"1. Small - 5 x 5\"\n" + 
 				"\"2. Medium - 7x7\"\n" + 
@@ -58,12 +62,13 @@ public class Runner {
 		int y = (int)(Math.random()*building.length-1)+1;
 		building[x][y] = new WinningRoom(x, y);
 		int a = (int)(Math.random()*building.length-1)+1;
-		
 		int b = (int)(Math.random()*building.length-1)+1;
 		building[a][b] = new XingRoom(5,5); 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person(name, 0, 0 , 10);
-		Monster monster1 = new Monster("a", rand.nextInt(5), rand.nextInt(5), 5);
+		Person player1 = new Person(name, 0, 0 , 101,0);
+		int g = (int)(Math.random()*building.length-1)+1;
+		int q = (int)(Math.random()*building.length-1)+1;
+		building[q][g] = new KeyRoom(q,g) ; 
 		System.out.println("Hello young traveler " + name + "\n"  + "Its dangerous to go alone here take this");
 		building[0][0].enterRoom(player1);
 
@@ -77,8 +82,18 @@ public class Runner {
 				}
 				System.out.println();
 			}
-			System.out.println("Where would you like to move? (Choose W, S, D, A)");
+			System.out.println("Life:" + player1.health + " Key:" + player1.key);
+			if (player1.health <= 0 )
+			{
+				System.out.println("You Lose"); 
+				gameOff(); 
+			}
+			if (gameOn) 
+			{
+				System.out.println("Where would you like to move? (Choose W, S, D, A)");
+			}
 			String move = in.nextLine();
+			
 			
 			if(validMove(move, player1, building))
 			

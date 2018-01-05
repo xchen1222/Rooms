@@ -3,6 +3,7 @@ public class Room {
 	Person occupant;
 	int xLoc,yLoc;
 	boolean discovered = false;
+	int n = 0 ; 
 	
 	public Room(int x, int y)
 	{
@@ -14,13 +15,13 @@ public class Room {
 		if ((x.getxLoc() == this.xLoc) && (x.getyLoc() == this.yLoc)) {
 			discovered = true;
 			if (x.getName().equals("")){ 
-				return ("[0]");
+				return ("["+n+"]");
 			} else {
 				return ("["+ x.getName().charAt(0) + "]");
 			}
 		}
 		else if (discovered == true) {
-			return ("[O]");
+			return ("["+(n+1)+"]");
 		} else
 			return ("[?]");
 	}
@@ -31,8 +32,11 @@ public class Room {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		discovered = true;
+		n++ ; 
+		occupant.health -= n  ;
+		discovered = true;		
 	}
+	
 	
 	public void leaveRoom(Person x)
 	

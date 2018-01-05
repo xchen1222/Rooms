@@ -2,8 +2,9 @@
 public class Person {
 	int xLoc;
 	String name;
-	int health;
+	int health ; 
 	int yLoc;
+	int key ; 
 	
 	public String getName() {
 		return name;
@@ -36,12 +37,13 @@ public class Person {
 		this.health = health;
 	}
 
-	public Person (String name, int xLoc, int yLoc, int health)
+	public Person (String name, int xLoc, int yLoc, int health, int key)
 	{
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
 		this.name = name;
 		this.health = health;
+		this.key = key ; 
 	}
 
 

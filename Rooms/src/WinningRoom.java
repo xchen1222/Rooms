@@ -13,8 +13,12 @@ public class WinningRoom extends Room {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		
-		System.out.println("This room is locked");
+		if (occupant.key == 10)
+		{
+			System.out.println("Congrats! You Win");
+			Runner.gameOff();
+		}
+		else System.out.println("This room is locked, You need 10 keys");
 		//Runner.gameOff();
 	}
 	public String display(Person x) {
