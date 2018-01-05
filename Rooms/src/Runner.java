@@ -8,7 +8,7 @@ public class Runner {
 	static String name;
 	static Random rand = new Random();
 	static int gotSize = 0;
-	static int size = 1;
+	static int size = 5;
 	
 	public static void main(String[] args)
 	{
@@ -18,14 +18,18 @@ public class Runner {
 			name = in.nextLine();
 			gotName++;			
 		}
-		System.out.println(".");
-		if ((gotSize == 0) && (gotName == 1)) {
+		System.out.println("Please select one of the following:\"\n" + 
+				"\"1. Small - 5 x 5\"\n" + 
+				"\"2. Medium - 7x7\"\n" + 
+				"\"3. Large - 10x10\"");
+		while ((gotSize == 0) && (gotName == 1)) {
+			gotSize++; 
 			boardSize(in.nextLine());
-			System.out.println(size);
-			gotSize++;
+			
 		}
-		System.out.println(size);
+		System.out.println("Size Selected:" + size);
 		
+
 		
 		Board[][] blankMap = new Board[size][size];
 		Room[][] building = new Room[size][size];
@@ -37,7 +41,7 @@ public class Runner {
 			{
 				building[x][y] = new Room(x,y);
 			}
-			System.out.println();
+		
 		}
 		for (int x = 0; x<blankMap.length; x++)
 		{
@@ -45,7 +49,6 @@ public class Runner {
 			{
 				blankMap[x][y] = new Board(x,y);
 			}
-			System.out.println();
 		}
 		
 		
@@ -63,6 +66,7 @@ public class Runner {
 		Monster monster1 = new Monster("a", rand.nextInt(5), rand.nextInt(5), 5);
 		System.out.println("Hello young traveler " + name + "\n"  + "Its dangerous to go alone here take this");
 		building[0][0].enterRoom(player1);
+
 		while(gameOn)
 		{
 			for (x = 0; x<blankMap.length; x++)
@@ -87,9 +91,10 @@ public class Runner {
 			}
 		}
 	in.close();
-	}
 	
 	
+}	
+
 	public static boolean validMove(String move, Person p, Room[][] map)
 	{
 		move = move.toLowerCase().trim();
@@ -151,16 +156,22 @@ public class Runner {
 		gameOn = false;
 	}
 	public static void boardSize(String x) {
-		if (x.toLowerCase().equals("small")) {
+		if (x.toLowerCase().equals("small")|| x.toLowerCase().equals("1") ) {
 			size = 5;
+			gotSize = 1 ; 
 		}
-		if (x.toLowerCase().equals("medium")) {
+		else if (x.toLowerCase().equals("medium") || x.toLowerCase().equals("2") ) {
 			size = 7;
+			gotSize = 1; 
+
 		}
-		if (x.toLowerCase().equals("large")) {
+		else if (x.toLowerCase().equals("large") || x.toLowerCase().equals("3") ) {
 			size = 10;
+			gotSize = 1; 
+
 		}
 		else {
+		 gotSize = 0  ; 
 		System.out.println("Invalid size, Please select one of the following:\n"
 				+ "1. Small - 5 x 5\n"
 				+ "2. Medium - 7x7\n"
