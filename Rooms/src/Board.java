@@ -4,19 +4,20 @@ public class Board {
 	int width;
 	Room[][] rooms;
 	
+	//Constructs board with a length and width
 	public Board(int length, int width) {
 		this.length = length;
 		this.width = width;
 	}
-
+	//Constructs board with given constructed room
 	public Board(Room[][] rooms) {
 		this.rooms = rooms;
 	}
-	
+	//Prints out display of board using the displays of each room and the location of given person
 	public void printBoard(Room[][] rooms, Person x) {
 		System.out.print(rooms[length][width].display(x));
 	}
-	
+	//Changes size of board using given user input
 	public void boardSize(String x) {
 		switch(x) {
 		case "small":
